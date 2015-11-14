@@ -132,8 +132,12 @@ class FitVertexCmd(OpenMayaMPx.MPxCommand):
                     distance = new_distance
         return nearest
 
-# Initialize the script plug-in
+
 def initializePlugin(plugin):
+    """
+    Initialize the script plug-in
+    :param plugin: OpenMayaMPx.MPxCommand
+    """
     pluginFn = OpenMayaMPx.MFnPlugin(plugin)
     try:
         pluginFn.registerCommand(
@@ -145,8 +149,12 @@ def initializePlugin(plugin):
         )
         raise
 
-# Uninitialize the script plug-in
+
 def uninitializePlugin(plugin):
+    """
+    Uninitialize the script plug-in
+    :param plugin: OpenMayaMPx.MPxCommand
+    """
     pluginFn = OpenMayaMPx.MFnPlugin(plugin)
     try:
         pluginFn.deregisterCommand(FitVertexCmd.kPluginCmdName)
