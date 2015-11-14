@@ -30,15 +30,15 @@ class FitVertexCmd(OpenMayaMPx.MPxCommand):
         selection = OpenMaya.MSelectionList()
         OpenMaya.MGlobal.getActiveSelectionList(selection)
 
-        if not self.__class__.selection_check(selection):
-            raise self.__class__.selection_error
+        if not FitVertexCmd.selection_check(selection):
+            raise FitVertexCmd.selection_error
 
-        self.first_meshfn, self.first_vertex_list, self.first_points = self.__class__.get_variables(0, selection)
-        self.second_points = self.__class__.get_points(1, selection)
+        self.first_meshfn, self.first_vertex_list, self.first_points = FitVertexCmd.get_variables(0, selection)
+        self.second_points = FitVertexCmd.get_points(1, selection)
 
         self.nearest_list = OpenMaya.MPointArray(self.first_meshfn.numVertices())
         for first_vertex in self.first_vertex_list:
-            nearest = self.__class__.get_nearest(self.first_points[first_vertex], self.second_points)
+            nearest = FitVertexCmd.get_nearest(self.first_points[first_vertex], self.second_points)
             self.nearest_list.set(nearest, first_vertex)
         self.redoIt()
 
