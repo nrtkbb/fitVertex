@@ -23,7 +23,7 @@ class FitVertexCmd(OpenMayaMPx.MPxCommand):
         self.nearest_list = None
 
     @staticmethod
-    def cmdCreator():
+    def cmd_creator():
         return OpenMayaMPx.asMPxPtr(FitVertexCmd())
 
     def doIt(self, *args, **kwargs):
@@ -137,7 +137,7 @@ def initializePlugin(plugin):
     pluginFn = OpenMayaMPx.MFnPlugin(plugin)
     try:
         pluginFn.registerCommand(
-            FitVertexCmd.kPluginCmdName, FitVertexCmd.cmdCreator
+            FitVertexCmd.kPluginCmdName, FitVertexCmd.cmd_creator
         )
     except:
         sys.stderr.write(
